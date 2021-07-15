@@ -8,4 +8,6 @@ https://github.com/onsi/ginkgo
 
 To install all packages, run `go mod tidy` in the directory with the file `go.mod`
 
+In the `tools` directory, you might have to run `go run github.com/onsi/ginkgo/ginkgo`
+
 To run tests, run either `ginkgo` (found in `$GOPATH/bin`) or `go test` in the module folder where you want to test.

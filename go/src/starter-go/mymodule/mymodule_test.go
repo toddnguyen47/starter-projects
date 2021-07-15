@@ -1,8 +1,5 @@
 package mymodule_test
 
-// Run ginkgo with:
-// go run github.com/onsi/ginkgo/ginkgo
-
 import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
