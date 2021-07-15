@@ -1,0 +1,75 @@
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+import org.gradle.api.tasks.testing.logging.TestLogEvent
+
+// Gradle Wrapper command
+// gradle wrapper --gradle-version 6.0.1
+
+apply plugin: 'java'
+
+// Make app runnable
+apply plugin: 'application'
+mainClassName = "com.github.toddnguyen47.Application"
+
+jar {
+  archiveVersion =  '0.1.0'
+}
+
+// tag::dependencies[]
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+  mavenCentral()
+}
+
+def junitJupiterVersion = '5.8.0-M1'
+
+dependencies {
+  // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
+  testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: "${junitJupiterVersion}"
+  // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine
+  testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: "${junitJupiterVersion}"
+}
+// end::dependencies[]
+
+// Enable Gradle's JUnit 5 built-in support
+test {
+  // Ref: https://www.petrikainulainen.net/programming/testing/junit-5-tutorial-running-unit-tests-with-gradle/
+  useJUnitPlatform()
+
+  // Ref: https://stackoverflow.com/a/36130467/6323360
+  testLogging {
+    // set options for log level LIFECYCLE
+    events  TestLogEvent.FAILED,
+            TestLogEvent.PASSED,
+            TestLogEvent.SKIPPED,
+            TestLogEvent.STANDARD_OUT
+    exceptionFormat TestExceptionFormat.FULL
+    showExceptions true
+    showCauses true
+    showStackTraces false
+
+    // set options for log level DEBUG and INFO
+    debug {
+      events  TestLogEvent.STARTED,
+              TestLogEvent.FAILED,
+              TestLogEvent.PASSED,
+              TestLogEvent.SKIPPED,
+              TestLogEvent.STANDARD_ERROR,
+              TestLogEvent.STANDARD_OUT
+      exceptionFormat TestExceptionFormat.FULL
+    }
+    info.events = debug.events
+    info.exceptionFormat = debug.exceptionFormat
+
+    // Fancy output
+    afterSuite { desc, result ->
+      if (!desc.parent) { // will match the outermost suite
+        def output = "Results: ${result.resultType} (${result.testCount} tests, ${result.successfulTestCount} passed, ${result.failedTestCount} failed, ${result.skippedTestCount} skipped)"
+        def startItem = '|  ', endItem = '  |'
+        def repeatLength = startItem.length() + output.length() + endItem.length()
+        println('\n' + ('-' * repeatLength) + '\n' + startItem + output + endItem + '\n' + ('-' * repeatLength))
+      }
+    }
+  }
+}
