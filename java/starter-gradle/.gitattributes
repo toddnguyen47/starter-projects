@@ -2,14 +2,27 @@
 
 # Text
 *.java text
+
+# Binary
+*.jar binary
+
+# *********************************************************
+# Below are defaults that should be in most .gitattributes
+# *********************************************************
+
+# Default Config Text
 *.cfg text
+*.csv text
+*.ini text
 *.json text
+*.properties text
+*.toml text
 *.xml text
 *.yaml text
 *.yml text
 
-# Binary
+# Default Binary
 *.jpg binary
 *.jpeg binary
+*.pdf binary
 *.png binary
-*.jar binary
