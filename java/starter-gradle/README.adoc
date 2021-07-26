@@ -1,0 +1,8 @@
+= Starter Gradle
+
+To run Gradle with warnings, run:
+
+[source, bash]
+----
+./gradlew build --warning-mode all
+----
