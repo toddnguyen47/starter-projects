@@ -4,33 +4,55 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent
 // Gradle Wrapper command
 // gradle wrapper --gradle-version 6.0.1
 
-apply plugin: 'java'
-
-// Make app runnable
-apply plugin: 'application'
-mainClassName = "com.github.toddnguyen47.Application"
-
-jar {
-  archiveVersion =  '0.1.0'
+plugins {
+  id 'com.github.johnrengelman.shadow' version '7.0.0'
+  id 'application'
+  id 'java'
 }
 
-// tag::dependencies[]
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
+def appVersion = "0.1.0-SNAPSHOT"
+
+// Make app runnable
+// TODO: Change `pathOfMainClass`
+def pathOfMainClass = "com.github.toddnguyen47.Application"
+mainClassName = "${pathOfMainClass}"
 
 repositories {
   mavenCentral()
 }
 
+// tag::dependencies[]
 def junitJupiterVersion = '5.8.0-M1'
 
 dependencies {
+  implementation "org.slf4j:slf4j-simple:1.7.30"
+  implementation "org.apache.kafka:kafka-streams:2.8.0"
+
   // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
   testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: "${junitJupiterVersion}"
   // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine
   testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: "${junitJupiterVersion}"
 }
 // end::dependencies[]
+
+// Set up JAR
+jar {
+  archiveVersion =  "${appVersion}"
+
+  manifest {
+    attributes(
+      "Class-Path": configurations.compileClasspath.collect { it.getName() }.join(" "),
+      "Main-Class": "${pathOfMainClass}"
+    )
+  }
+}
+
+shadowJar {
+  archiveBaseName = "${project.name}-${appVersion}-standalone"
+  archiveClassifier = ''
+}
 
 // Enable Gradle's JUnit 5 built-in support
 test {
