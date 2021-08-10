@@ -1,4 +1,5 @@
 """Default app"""
+from src.mymath import mymath
 
 
 class App:
@@ -9,5 +10,5 @@ class App:
 
     def return_two(self) -> int:
         """Returns the number 2"""
-        self._variable_x = 2
+        self._variable_x = mymath.return_two()
         return self._variable_x
