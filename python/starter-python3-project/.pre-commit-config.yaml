@@ -13,6 +13,11 @@ repos:
         language: system
         verbose: true
         pass_filenames: false
+      - id: generate-requirements-txt
+        name: Generate requirements.txt
+        entry: bash -c 'cd python/starter-python3-project && pipenv run pip3 freeze > requirements.txt'
+        language: system
+        pass_filenames: false
       - id: black
         name: black formatter
         entry: bash -c 'cd python/starter-python3-project && pre-commit-scripts/run-black.sh $@'
