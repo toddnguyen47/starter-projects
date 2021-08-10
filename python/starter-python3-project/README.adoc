@@ -1,0 +1,6 @@
+= Starter Python3 Project
+
+. Install pre-commit: https://pre-commit.com/
+. The only `pip` requirement is `pipenv`. We wil work purely with virtual environments, at least
+for development.
+. Install `pyenv` if needed: https://github.com/pyenv/pyenv
