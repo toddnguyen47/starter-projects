@@ -1,6 +1,13 @@
+"""Default app"""
+
+
 class App:
+    """App class"""
+
     def __init__(self) -> None:
-        pass
+        self._variable_x = 2
 
     def return_two(self) -> int:
-        return 2
+        """Returns the number 2"""
+        self._variable_x = 2
+        return self._variable_x
