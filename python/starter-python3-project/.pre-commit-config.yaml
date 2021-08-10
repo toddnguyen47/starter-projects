@@ -1,5 +1,10 @@
 fail_fast: true
 repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.0.1
+    hooks:
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
   - repo: local
     hooks:
       - id: echo-virtualenv-warning
@@ -8,11 +13,15 @@ repos:
         language: system
         verbose: true
         pass_filenames: false
-      - id: pylint
-        name: pylint
-        entry: pylint
+      - id: black
+        name: Format Python files using Black formatter
+        entry: bash -c 'cd python/starter-python3-project && pre-commit-scripts/run-black.sh $@'
         language: system
         types: [python]
         args:
-          - --max-line-length=120
-          - --disable=too-few-public-methods
+          - --line-length=120
+      - id: pylint
+        name: pylint
+        entry: bash -c 'cd python/starter-python3-project && pre-commit-scripts/run-pylint.sh $@'
+        language: system
+        types: [python]
