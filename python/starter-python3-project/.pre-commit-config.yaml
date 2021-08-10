@@ -1,11 +1,16 @@
 fail_fast: true
-exclude: ^[\s\S]*starter-python3-project/tests
 repos:
   - repo: local
     hooks:
+      - id: echo-virtualenv-warning
+        name: Echo Virtualenv warning
+        entry: echo "Remember to activate virtualenv before commit!"
+        language: system
+        verbose: true
+        pass_filenames: false
       - id: pylint
         name: pylint
-        entry: pipenv run pylint
+        entry: pylint
         language: system
         types: [python]
         args:
