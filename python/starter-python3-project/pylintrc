@@ -23,7 +23,9 @@ init-hook="from pylint.config import find_pylintrc; import os, sys; sys.path.app
 # no Warning level messages displayed, use"--disable=all --enable=classes
 # --disable=W"
 
-disable=too-few-public-methods
+disable=
+    too-few-public-methods,
+    no-self-use
 
 [FORMAT]
 
