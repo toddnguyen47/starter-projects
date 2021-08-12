@@ -6,7 +6,7 @@ from typing import Optional, Sequence
 import sys
 
 # Ref: https://github.com/pre-commit/pre-commit-hooks/blob/master/pre_commit_hooks/trailing_whitespace_fixer.py
-_cmd_to_run = ["black", "--line-length=120"]
+_cmd_to_run = ["flake8", "--config", "python/starter-python3-project/.flake8"]
 
 
 def main(argv: Optional[Sequence[str]] = None) -> int:
