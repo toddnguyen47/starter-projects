@@ -20,18 +20,18 @@ repos:
         pass_filenames: false
       - id: black
         name: black formatter
-        entry: bash -c 'cd python/starter-python3-project && pre-commit-scripts/run-black.sh $@'
+        entry: bash -c 'cd python/starter-python3-project && python3 pre_commit_hooks/run_black.py $@'
         language: system
         types: [python]
         args:
           - --line-length=120
       - id: flake8
         name: flake8
-        entry: bash -c 'cd python/starter-python3-project && pre-commit-scripts/run-flake8.sh $@'
+        entry: bash -c 'cd python/starter-python3-project && pre_commit_hooks/run-flake8.sh $@'
         language: system
         types: [python]
       - id: pylint
         name: pylint
-        entry: bash -c 'cd python/starter-python3-project && pre-commit-scripts/run-pylint.sh $@'
+        entry: bash -c 'cd python/starter-python3-project && pre_commit_hooks/run-pylint.sh $@'
         language: system
         types: [python]
