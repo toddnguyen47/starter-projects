@@ -21,4 +21,6 @@
     </rule>
     <rule ref="category/java/design.xml"></rule>
     <rule ref="category/java/errorprone.xml"></rule>
+    <rule ref="category/java/multithreading.xml"></rule>
+    <rule ref="category/java/performance.xml"></rule>
 </ruleset>
