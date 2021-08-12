@@ -31,6 +31,7 @@
         <property name="junit5TestPattern" value="[a-z][a-zA-Z0-9_]*"/>
       </properties>
     </rule>
+    <rule ref="category/java/design.xml"></rule>
     <rule ref="category/java/errorprone.xml"></rule>
     <rule ref="category/java/multithreading.xml"></rule>
     <rule ref="category/java/performance.xml"></rule>
