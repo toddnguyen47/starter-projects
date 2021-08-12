@@ -19,4 +19,6 @@
       <exclude name="AtLeastOneConstructor"/>
       <exclude name="CommentDefaultAccessModifier" />
     </rule>
+    <rule ref="category/java/design.xml"></rule>
+    <rule ref="category/java/errorprone.xml"></rule>
 </ruleset>
