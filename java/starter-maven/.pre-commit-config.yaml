@@ -9,7 +9,7 @@ repos:
   - repo: local
     hooks:
       - id: run-pmd
-        name: pmd Java static final analysis
+        name: pmd java source code analyzer
         entry: python3 java/starter-maven/pre_commit_hooks/run_pmd.py
         language: python
         types: [java]
