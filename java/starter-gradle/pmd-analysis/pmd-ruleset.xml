@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<ruleset name="PMD Ruleset for Java"
+    xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
+
+    <description>
+        PMD Ruleset for Java files.
+    </description>
+
+    <exclude-pattern></exclude-pattern>
+    <include-pattern></include-pattern>
+
+    <!-- Your rules will come here -->
+    <!-- Ref: https://pmd.github.io/pmd-6.37.0/pmd_rules_java.html -->
+    <rule ref="category/java/bestpractices.xml"></rule>
+    <rule ref="category/java/codestyle.xml">
+      <exclude name="AtLeastOneConstructor"/>
+      <exclude name="CommentDefaultAccessModifier" />
+    </rule>
+</ruleset>
