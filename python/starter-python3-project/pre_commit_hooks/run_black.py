@@ -4,9 +4,10 @@ import subprocess
 import argparse
 from typing import Optional, Sequence
 import sys
+import collections
 
 # Ref: https://github.com/pre-commit/pre-commit-hooks/blob/master/pre_commit_hooks/trailing_whitespace_fixer.py
-_cmd_to_run = ["black", "--line-length=120"]
+_cmd_to_run = collections.deque(["black", "--line-length=120"])
 
 
 def main(argv: Optional[Sequence[str]] = None) -> int:
@@ -25,6 +26,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
                 process.kill()
                 _outs, _errs = process.communicate()
             return_code += process.returncode
+        _cmd_to_run.pop()
     return return_code
 
 

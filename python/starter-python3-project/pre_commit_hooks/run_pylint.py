@@ -5,10 +5,11 @@ import argparse
 from typing import Optional, Sequence
 import sys
 import os
+import collections
 
 # Ref: https://github.com/pre-commit/pre-commit-hooks/blob/master/pre_commit_hooks/trailing_whitespace_fixer.py
 _PREFIX = "python/starter-python3-project/"
-_cmd_to_run = ["pylint"]
+_cmd_to_run = collections.deque(["pylint"])
 
 
 def main(argv: Optional[Sequence[str]] = None) -> int:
@@ -28,6 +29,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
                 process.kill()
                 _outs, _errs = process.communicate()
             return_code += process.returncode
+        _cmd_to_run.pop()
     return return_code
 
 

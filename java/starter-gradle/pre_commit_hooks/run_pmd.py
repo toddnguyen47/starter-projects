@@ -3,18 +3,21 @@
 import subprocess
 import argparse
 from typing import Optional, Sequence
+import collections
 
 # Ref: https://github.com/pre-commit/pre-commit-hooks/blob/master/pre_commit_hooks/trailing_whitespace_fixer.py
 _PMD_ANALYSIS_FOLDER = "java/starter-gradle/pmd-analysis"
 
-_pmd_cmd = [
-    "pmd",
-    "-cache",
-    '"' + _PMD_ANALYSIS_FOLDER + '/pmd-cache.bin"',
-    "-rulesets",
-    '"' + _PMD_ANALYSIS_FOLDER + '/pmd-ruleset.xml"',
-    "-dir"
-]
+_pmd_cmd = collections.deque(
+    [
+        "pmd",
+        "-cache",
+        '"' + _PMD_ANALYSIS_FOLDER + '/pmd-cache.bin"',
+        "-rulesets",
+        '"' + _PMD_ANALYSIS_FOLDER + '/pmd-ruleset.xml"',
+        "-dir",
+    ]
+)
 
 
 def main(argv: Optional[Sequence[str]] = None) -> int:
@@ -33,6 +36,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
                 process.kill()
                 _outs, _errs = process.communicate()
             return_code += process.returncode
+        _pmd_cmd.pop()
     return return_code
 
 
