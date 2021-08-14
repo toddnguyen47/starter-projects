@@ -4,12 +4,12 @@ import subprocess
 import argparse
 from typing import Optional, Sequence
 import sys
+import os
 import collections
 
 # Ref: https://github.com/pre-commit/pre-commit-hooks/blob/master/pre_commit_hooks/trailing_whitespace_fixer.py
-_cmd_to_run = collections.deque(
-    ["flake8", "--config", "python/starter-python3-project/.flake8"]
-)
+_PREFIX = "python/starter-python3-project/"
+_cmd_to_run = collections.deque(["flake8"])
 
 
 def main(argv: Optional[Sequence[str]] = None) -> int:
@@ -19,8 +19,9 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     args = parser.parse_args(argv)
 
     return_code = 0
+    os.chdir(_PREFIX)
     for filename in args.filenames:
-        _cmd_to_run.append(filename)
+        _cmd_to_run.append(filename[len(_PREFIX) :])
         with subprocess.Popen(_cmd_to_run) as process:
             try:
                 _outs, _errs = process.communicate(timeout=15)
