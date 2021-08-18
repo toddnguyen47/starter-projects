@@ -15,7 +15,7 @@ repos:
         pass_filenames: false
       - id: generate-requirements-txt
         name: Generate requirements.txt
-        entry: bash -c 'cd python/starter-python3-project && pipenv run pip3 freeze > requirements.txt'
+        entry: bash -c 'cd python/starter-python3-project/ && pipenv run pip3 freeze > requirements.txt'
         language: system
         pass_filenames: false
       - id: black
@@ -31,5 +31,10 @@ repos:
       - id: pylint
         name: pylint
         entry: python3 python/starter-python3-project/pre_commit_hooks/run_pylint.py
+        language: python
+        types: [python] # types of files to run this hook on
+      - id: pytest
+        name: pytest
+        entry: python3 python/starter-python3-project/pre_commit_hooks/run_pytest.py
         language: python
         types: [python] # types of files to run this hook on
