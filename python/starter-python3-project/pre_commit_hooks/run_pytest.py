@@ -6,10 +6,14 @@ from typing import Optional, Sequence
 import sys
 import os
 import collections
+import re
 
 # Ref: https://github.com/pre-commit/pre-commit-hooks/blob/master/pre_commit_hooks/trailing_whitespace_fixer.py
 _PREFIX = "python/starter-python3-project/"
 _cmd_to_run = collections.deque(["pytest"])
+
+_FILENAME_SKIP_PATTERN = r"test[\S]*?\/"
+_REGEX_PROG = re.compile(_FILENAME_SKIP_PATTERN)
 
 
 def main(argv: Optional[Sequence[str]] = None) -> int:
@@ -26,7 +30,6 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     for filename in args.filenames:
         if file_prefix:
             filename = filename[len(file_prefix) :]
-        print(filename)
         # Any extra checks
         if _skip_file(filename):
             continue
@@ -47,7 +50,9 @@ def _skip_file(filename: str) -> bool:
 
     If no extra skips are needed, simply return `False` and the filename will NOT be skipped.
     """
-    return "test/" not in filename and "tests/" not in filename
+
+    # Skip any files not in the `test/` or `tests/` folder
+    return _REGEX_PROG.search(filename) is None
 
 
 if __name__ == "__main__":
