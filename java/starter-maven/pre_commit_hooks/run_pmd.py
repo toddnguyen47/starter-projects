@@ -49,14 +49,14 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
 
     return_code = 0
     _remove_output_files(_output_files)
-    _PREFIX = _PREFIX.strip()
-    if _PREFIX:
-        os.chdir(_PREFIX)
+    file_prefix = _PREFIX.strip()
+    if file_prefix:
+        os.chdir(file_prefix)
 
     for cmd, output_file in zip(_cmds, _output_files):
         for filename in args.filenames:
-            if _PREFIX:
-                filename = filename[len(_PREFIX):]
+            if file_prefix:
+                filename = filename[len(file_prefix):]
             cmd.append(filename)
             with subprocess.Popen(cmd, stdout=subprocess.PIPE) as process:
                 try:
