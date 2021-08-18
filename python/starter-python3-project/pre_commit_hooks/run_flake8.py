@@ -19,9 +19,14 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     args = parser.parse_args(argv)
 
     return_code = 0
-    os.chdir(_PREFIX)
+    file_prefix = _PREFIX.strip()
+    if file_prefix:
+        os.chdir(file_prefix)
+
     for filename in args.filenames:
-        _cmd_to_run.append(filename[len(_PREFIX) :])
+        if file_prefix:
+            filename = filename[len(file_prefix) :]
+        _cmd_to_run.append(filename)
         with subprocess.Popen(_cmd_to_run) as process:
             try:
                 _outs, _errs = process.communicate(timeout=15)
