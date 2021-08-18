@@ -56,7 +56,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     for cmd, output_file in zip(_cmds, _output_files):
         for filename in args.filenames:
             if file_prefix:
-                filename = filename[len(file_prefix):]
+                filename = filename[len(file_prefix) :]
             cmd.append(filename)
             with subprocess.Popen(cmd, stdout=subprocess.PIPE) as process:
                 try:
