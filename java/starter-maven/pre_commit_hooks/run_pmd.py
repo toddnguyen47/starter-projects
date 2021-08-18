@@ -7,7 +7,7 @@ import collections
 import os
 
 # Ref: https://github.com/pre-commit/pre-commit-hooks/blob/master/pre_commit_hooks/trailing_whitespace_fixer.py
-_PREFIX = "java/starter-gradle/"
+_PREFIX = "java/starter-maven/"
 _PMD_ANALYSIS_FOLDER = "pmd-analysis"
 _UTF8_ENCODING = "utf-8"
 
@@ -49,10 +49,14 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
 
     return_code = 0
     _remove_output_files(_output_files)
-    os.chdir(_PREFIX)
+    _PREFIX = _PREFIX.strip()
+    if _PREFIX:
+        os.chdir(_PREFIX)
+
     for cmd, output_file in zip(_cmds, _output_files):
         for filename in args.filenames:
-            filename = filename[len(_PREFIX):]
+            if _PREFIX:
+                filename = filename[len(_PREFIX):]
             cmd.append(filename)
             with subprocess.Popen(cmd, stdout=subprocess.PIPE) as process:
                 try:
