@@ -10,6 +10,6 @@ repos:
     hooks:
       - id: run-pmd
         name: pmd java source code analyzer
-        entry: python3 java/starter-maven/pre_commit_hooks/run_pmd.py
+        entry: python3 java/starter-gradle/pre_commit_hooks/run_pmd.py
         language: python
         types: [java]
