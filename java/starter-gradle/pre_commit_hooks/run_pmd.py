@@ -53,7 +53,6 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     for cmd, output_file in zip(_cmds, _output_files):
         for filename in args.filenames:
             filename = filename[len(_PREFIX):]
-            print(filename)
             cmd.append(filename)
             with subprocess.Popen(cmd, stdout=subprocess.PIPE) as process:
                 try:
