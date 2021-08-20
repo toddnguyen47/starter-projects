@@ -23,6 +23,7 @@
       <exclude name="CommentDefaultAccessModifier" />
       <exclude name="LongVariable" />
       <exclude name="OnlyOneReturn" />
+      <exclude name="UnnecessaryLocalBeforeReturn" />
     </rule>
     <rule ref="category/java/design.xml">
       <exclude name="ExcessiveImports" />
