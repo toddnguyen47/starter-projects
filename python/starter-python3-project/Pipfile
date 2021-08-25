@@ -4,6 +4,7 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [packages]
+colorama = "*"
 
 [dev-packages]
 black = "*"
@@ -16,4 +17,3 @@ python_version = "3"
 
 [pipenv]
 allow_prereleases = true
-
