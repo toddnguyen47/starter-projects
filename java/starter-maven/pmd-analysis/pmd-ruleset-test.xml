@@ -1,60 +1,70 @@
 <?xml version="1.0"?>
 
 <ruleset name="PMD Ruleset for Java"
-    xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
+  xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
 
-    <description>
-        PMD Ruleset for Java files.
-    </description>
+  <description>PMD Ruleset for Java files.</description>
 
-    <exclude-pattern>.*/main/.*</exclude-pattern>
-    <include-pattern></include-pattern>
+  <exclude-pattern>.*/main/.*</exclude-pattern>
+  <include-pattern></include-pattern>
 
-    <!-- Your rules will come here -->
-    <!-- Ref: https://pmd.github.io/pmd-6.37.0/pmd_rules_java.html -->
-    <rule ref="category/java/bestpractices.xml">
-      <exclude name="GuardLogStatement" />
-      <exclude name="JUnitAssertionsShouldIncludeMessage" />
-    </rule>
-    <rule ref="category/java/codestyle.xml">
-      <exclude name="AtLeastOneConstructor"/>
-      <exclude name="CommentDefaultAccessModifier" />
-      <exclude name="LongVariable" />
-      <exclude name="OnlyOneReturn" />
-      <exclude name="UnnecessaryLocalBeforeReturn" />
-    </rule>
-    <rule ref="category/java/design.xml">
-      <exclude name="ExcessiveImports" />
-      <exclude name="LawOfDemeter" />
-      <exclude name="LoosePackageCoupling" />
-      <exclude name="SignatureDeclareThrowsException" />
-      <exclude name="TooManyFields" />
-      <exclude name="TooManyMethods" />
-    </rule>
-    <rule ref="category/java/errorprone.xml">
-      <exclude name="BeanMembersShouldSerialize" />
-    </rule>
-    <rule ref="category/java/multithreading.xml"></rule>
-    <rule ref="category/java/performance.xml"></rule>
-    <rule ref="category/java/security.xml"></rule>
+  <!-- Your rules will come here -->
+  <!-- Ref: https://pmd.github.io/pmd-6.37.0/pmd_rules_java.html -->
+  <rule ref="category/java/bestpractices.xml">
+    <exclude name="GuardLogStatement" />
+    <exclude name="JUnitAssertionsShouldIncludeMessage" />
+  </rule>
+  <rule ref="category/java/codestyle.xml">
+    <exclude name="AtLeastOneConstructor" />
+    <exclude name="CommentDefaultAccessModifier" />
+    <exclude name="LongVariable" />
+    <exclude name="OnlyOneReturn" />
+    <exclude name="UnnecessaryLocalBeforeReturn" />
+  </rule>
+  <rule ref="category/java/design.xml">
+    <exclude name="ExcessiveImports" />
+    <exclude name="ExcessivePublicCount" />
+    <exclude name="LawOfDemeter" />
+    <exclude name="LoosePackageCoupling" />
+    <exclude name="SignatureDeclareThrowsException" />
+    <exclude name="TooManyFields" />
+    <exclude name="TooManyMethods" />
+    <exclude name="UnusedAssignment" />
+  </rule>
+  <rule ref="category/java/errorprone.xml">
+    <exclude name="BeanMembersShouldSerialize" />
+  </rule>
+  <rule ref="category/java/multithreading.xml"></rule>
+  <rule ref="category/java/performance.xml"></rule>
+  <rule ref="category/java/security.xml"></rule>
 
-    <!-- Rule Properties -->
-    <rule ref="category/java/codestyle.xml/ShortVariable">
-      <properties>
-        <property name="minimum" value="2" />
-      </properties>
-    </rule>
-    <rule ref="category/java/bestpractices.xml/JUnitTestContainsTooManyAsserts">
-      <properties>
-          <property name="maximumAsserts" value="3" />
-      </properties>
-    </rule>
-    <rule ref="category/java/codestyle.xml/MethodNamingConventions">
-      <properties>
-        <property name="junit4TestPattern" value="[a-z][a-zA-Z0-9_]*"/>
-        <property name="junit5TestPattern" value="[a-z][a-zA-Z0-9_]*"/>
-      </properties>
-    </rule>
+  <!-- Rule Properties -->
+  <rule ref="category/java/codestyle.xml/ShortVariable">
+    <properties>
+      <property name="minimum" value="2" />
+    </properties>
+  </rule>
+  <rule ref="category/java/bestpractices.xml/JUnitTestContainsTooManyAsserts">
+    <properties>
+      <property name="maximumAsserts" value="3" />
+    </properties>
+  </rule>
+  <rule ref="category/java/codestyle.xml/MethodNamingConventions">
+    <properties>
+      <property name="methodPattern" value="[a-z][a-zA-Z0-9_]*" />
+      <property name="junit4TestPattern" value="[a-z][a-zA-Z0-9_]*" />
+      <property name="junit5TestPattern" value="[a-z][a-zA-Z0-9_]*" />
+    </properties>
+  </rule>
+  <rule ref="category/java/codestyle.xml/FieldNamingConventions">
+    <properties>
+      <property name="exclusions" value="serialVersionUID|serialPersistentFields|logger" />
+    </properties>
+  </rule>
+  <rule ref="category/java/errorprone.xml/AvoidLiteralsInIfCondition">
+    <properties>
+      <property name="ignoreMagicNumbers" value="-1,0,1" />
+    </properties>
+  </rule>
 </ruleset>
