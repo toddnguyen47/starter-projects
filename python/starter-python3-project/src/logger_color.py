@@ -83,8 +83,8 @@ def _add_file_handler(name: str, formatter: logging.Formatter, logger: logging.L
     if not os.path.exists(_LOGS_FOLDER):
         os.mkdir(_LOGS_FOLDER)
     file_handler = logging.FileHandler("logs/" + name + ".log")
-    # For files, we probably want to log all levels
     file_handler.setFormatter(formatter)
+    # For files, we probably want to log all levels
     file_handler.setLevel(logging.DEBUG)
     logger.addHandler(file_handler)
 
