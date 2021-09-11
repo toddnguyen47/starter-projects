@@ -12,6 +12,10 @@ repos:
       - id: check-shebang-scripts-are-executable
       - id: check-merge-conflict
       - id: check-symlinks
+  - repo: https://github.com/toddnguyen47/pre-commit-hooks
+    rev: v1.0.0
+    hooks:
+      - id: convert-beginning-tabs
   - repo: local
     hooks:
       - id: echo-virtualenv-warning
