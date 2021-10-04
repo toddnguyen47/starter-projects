@@ -17,6 +17,7 @@
         "eslint-plugin-import"
     ],
     "rules": {
+        // Common rules
         "curly": ["error", "all"],
         "import/extensions": ["error", "never", {"js": "always"}],
         "max-len" : ["error", { "code": 120 }],
@@ -27,5 +28,6 @@
         "no-restricted-syntax": ["error", "ForInStatement", "WithStatement", "BinaryExpression[operator='in']"],
         "object-curly-spacing": ["error", "never"],
         "quotes": ["error", "single"]
+        // Rules for specific projects
     }
 }
