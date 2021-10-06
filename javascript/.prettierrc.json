@@ -1,8 +1,15 @@
 {
-  "bracketSameLine": true,
   "bracketSpacing": false,
   "semi": true,
   "singleQuote": true,
-  "tabWidth": 2,
-  "trailingComma": "all"
+  "tabWidth": 4,
+  "trailingComma": "all",
+  "overrides": [
+    {
+      "files": ["*.html"],
+      "options": {
+        "bracketSameLine": true
+      }
+    }
+  ]
 }
