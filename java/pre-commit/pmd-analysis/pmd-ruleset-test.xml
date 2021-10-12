@@ -14,6 +14,7 @@
   <rule ref="category/java/bestpractices.xml">
     <exclude name="GuardLogStatement" />
     <exclude name="JUnitAssertionsShouldIncludeMessage" />
+    <exclude name="UnusedAssignment" />
   </rule>
   <rule ref="category/java/codestyle.xml">
     <exclude name="AtLeastOneConstructor" />
@@ -30,7 +31,6 @@
     <exclude name="SignatureDeclareThrowsException" />
     <exclude name="TooManyFields" />
     <exclude name="TooManyMethods" />
-    <exclude name="UnusedAssignment" />
   </rule>
   <rule ref="category/java/errorprone.xml">
     <exclude name="BeanMembersShouldSerialize" />
