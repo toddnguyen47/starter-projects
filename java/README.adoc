@@ -7,3 +7,23 @@ Starter Java projects in both Maven and Gradle.
 If you would like to use https://pre-commit.com/[pre-commit hooks], copy all files in the `pre-commit` folder (including `.pre-commit-config.yaml`; might be hidden) into your directory. Then, find all strings of `change/path/to/` and change it to the *ROOT* path of your directory.
 
 For example, if the *ROOT* path of your directory is the root github repository, then simply replace `change/path/to/` with `''` (empty space). If your project lives in `project/java`, then replace `change/path/to/` with `project/java`.
+
+== Run maven tests
+
+If you would like to run `mvn test` locally, add the following to your `.pre-commit-config.yaml`
+
+[source, yaml]
+----
+---
+repos:
+  - repo: local
+    hooks:
+      - id: maven
+        name: maven test
+        entry: python3 pre_commit_hooks/run_maven.py
+        args: ["test", "--define", "jacoco.skip=true", "--define", "doxygen.skip=true"]
+        language: python
+        types: [java]
+        verbose: true
+        pass_filenames: false
+----
