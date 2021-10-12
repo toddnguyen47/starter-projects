@@ -9,7 +9,7 @@ import os
 import time
 
 # Ref: https://github.com/pre-commit/pre-commit-hooks/blob/master/pre_commit_hooks/trailing_whitespace_fixer.py
-_PREFIX = "java/starter-gradle/"
+_PREFIX = "change/path/to/"
 _PMD_ANALYSIS_FOLDER = "pmd-analysis"
 _UTF8_ENCODING = "utf-8"
 _CACHE_FILE_EXT = ".bin"

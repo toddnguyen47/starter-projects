@@ -1,0 +1,9 @@
+= Starter Java Projects
+
+Starter Java projects in both Maven and Gradle.
+
+== pre-commit files
+
+If you would like to use https://pre-commit.com/[pre-commit hooks], copy all files in the `pre-commit` folder (including `.pre-commit-config.yaml`; might be hidden) into your directory. Then, find all strings of `change/path/to/` and change it to the *ROOT* path of your directory.
+
+For example, if the *ROOT* path of your directory is the root github repository, then simply replace `change/path/to/` with `''` (empty space). If your project lives in `project/java`, then replace `change/path/to/` with `project/java`.
