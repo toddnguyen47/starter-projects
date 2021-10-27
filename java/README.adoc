@@ -30,6 +30,20 @@ repos:
 
 == VS Code settings
 
+If you want to organize imports on save (highly recommended!)
+
+[source, json]
+----
+{
+  "[java]": {
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
+  }
+}
+----
+
 If you want to specify a specific formatter, add this to your `settings.json`:
 
 [source, json]
