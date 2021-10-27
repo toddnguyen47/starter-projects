@@ -28,6 +28,38 @@ repos:
         pass_filenames: false
 ----
 
+== JUnit Tests Enclosed classes
+
+Really good example of `Enclosed.class`: https://stackoverflow.com/a/29113260
+
+[source, java]
+----
+@RunWith(Enclosed.class)
+public class EnclosedTest {
+
+  abstract public static class SharedSetUp {
+    @Before
+    public void printSomething() {
+      System.out.println("Helllooo Meggan");
+    }
+  }
+
+  public static class FirstTest extends SharedSetUp {
+    @Test
+    public void assertThatSomethingIsTrue() {
+      assertThat(true, is(true));
+    }
+  }
+
+  public static class SecondTest extends SharedSetUp {
+    @Test
+    public void assertThatSomethingIsFalse() {
+      assertThat(false, is(false));
+    }
+  }
+}
+----
+
 == VS Code settings
 
 If you want to organize imports on save (highly recommended!)
