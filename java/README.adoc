@@ -27,3 +27,14 @@ repos:
         verbose: true
         pass_filenames: false
 ----
+
+== VS Code settings
+
+If you want to specify a specific formatter, add this to your `settings.json`:
+
+[source, json]
+----
+{
+  "java.format.settings.url": "https://raw.githubusercontent.com/google/styleguide/gh-pages/intellij-java-google-style.xml",
+}
+----
