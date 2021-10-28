@@ -82,7 +82,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
                 process.kill()
                 stdout, _stderr = process.communicate()
             return_code = max(return_code, process.returncode)
-            with open(output_file, "a+", encoding="utf-8") as file:
+            with open(output_file, "a+", encoding=_UTF8_ENCODING) as file:
                 str_to_write = stdout.decode(_UTF8_ENCODING).strip()
                 if str_to_write:
                     html_text = _generate_html_from_txt(output_file, str_to_write)
