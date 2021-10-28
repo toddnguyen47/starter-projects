@@ -104,11 +104,15 @@ def _generate_html_from_txt(doc_title: str, input_str: str) -> str:
     doc = dominate.document(title=doc_title)
 
     with doc.head:
-        tags.style(r"html{font-size:62.5%}body{font-size:1.8rem}p.pmd-text{font-family:monospace}")
+        tags.style(
+            r"html{font-size:62.5%}body{font-size:1.8rem}div.content{width:1024px;margin:auto}"
+            + r"p.pmd-text{font-family:monospace}"
+        )
 
     with doc:
-        for line in input_str.split("\n"):
-            tags.p(line, _class="pmd-text")
+        with tags.div(_class="content"):
+            for line in input_str.split("\n"):
+                tags.p(line, _class="pmd-text")
 
     return doc
 
