@@ -84,9 +84,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             return_code = max(return_code, process.returncode)
             with open(output_file, "a+", encoding=_UTF8_ENCODING) as file:
                 str_to_write = stdout.decode(_UTF8_ENCODING).strip()
-                if str_to_write:
-                    html_text = _generate_html_from_txt(output_file, str_to_write)
-                    file.write(str(html_text))
+                html_text = _generate_html_from_txt(output_file, str_to_write)
+                file.write(str(html_text))
         cmd.pop()
     return return_code
 
@@ -111,8 +110,11 @@ def _generate_html_from_txt(doc_title: str, input_str: str) -> str:
 
     with doc:
         with tags.div(_class="content"):
-            for line in input_str.split("\n"):
-                tags.p(line, _class="pmd-text")
+            if input_str.strip():
+                for line in input_str.split("\n"):
+                    tags.p(line, _class="pmd-text")
+            else:
+                tags.p("You're good! No errors ✨ 🍰 ✨", _class="pmd-text")
 
     return doc
 
