@@ -25,3 +25,9 @@ repos:
         entry: python3 change/path/to/pre_commit_hooks/run_pmd.py
         language: python
         types: [java]
+      - id: eclipse-formatter
+        name: Run eclipse-formatter
+        entry: /Users/tn6091/.pyenv/shims/python3 pre_commit_hooks/run_eclipse_java_format.py
+        language: python
+        types: [java]
+        args: ["--ignore-files", "file1.java, file2.java"] # comma-separated list of files to ignore
