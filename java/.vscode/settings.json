@@ -1,0 +1,3 @@
+{
+  "mvn_skip_doc": "--define 'jacoco.skip=true' --define 'doxygen.skip=true'"
+}
