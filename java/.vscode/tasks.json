@@ -25,7 +25,7 @@
     {
       "label": "mvn test current file",
       "type": "shell",
-      "command": "mvn test ${config:mvn_skip_doc} --define 'test=${fileBasenameNoExtension}'",
+      "command": "mvn test ${config:mvn_skip_doc} --define 'test=${fileBasenameNoExtension}' --define 'trimStackTrace=false'",
       "group": "test",
       "presentation": {
         "echo": true,
