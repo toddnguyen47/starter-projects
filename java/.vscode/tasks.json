@@ -13,7 +13,13 @@
     {
       "label": "mvn test",
       "type": "shell",
-      "command": "mvn ${config:mvn_skip_doc} -B test",
+      "command": "mvn ${config:mvn_skip_doc} --batch-mode test",
+      "group": "test"
+    },
+    {
+      "label": "mvn coverage",
+      "type": "shell",
+      "command": "mvn --define 'doxygen.skip=true' --batch-mode test",
       "group": "test"
     },
     {
