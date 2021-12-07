@@ -71,7 +71,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
 
     for cmd, output_file in zip(_cmds, _output_files):
         cmd.append(f'"{file_list}"')
-        print(" ".join(cmd))
+        # print(" ".join(cmd))
         with subprocess.Popen(cmd, stdout=subprocess.PIPE) as process:
             try:
                 stdout, _stderr = process.communicate(timeout=15)
