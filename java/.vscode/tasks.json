@@ -38,6 +38,12 @@
         "showReuseMessage": true,
         "clear": true
       }
+    },
+    {
+      "label": "mvn coverage current file",
+      "type": "shell",
+      "command": "mvn test --define 'test=${fileBasenameNoExtension}' --define 'doxygen.skip=true' && ${workspaceFolder}/pre_commit_hooks/generate_jacoco_report.sh",
+      "group": "test"
     }
   ]
 }
