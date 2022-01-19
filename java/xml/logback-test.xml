@@ -12,8 +12,8 @@
     <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
 
     <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
-        <layout class="ch.qos.logback.classic.PatternLayout">
-            <Pattern>
+        <layout>
+            <pattern>
                 %d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n
             </Pattern>
         </layout>
@@ -22,7 +22,7 @@
     <appender name="file-appender-date" class="ch.qos.logback.core.FileAppender">
         <file>${LOG_PATH}/logfile-${timestamp-by-second}.log</file>
         <encoder>
-            <Pattern>
+            <pattern>
                 %d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n
             </Pattern>
             <outputPatternAsHeader>true</outputPatternAsHeader>
@@ -37,7 +37,7 @@
             <totalSizeCap>1MB</totalSizeCap>
         </rollingPolicy>
         <encoder>
-            <Pattern>
+            <pattern>
                 %d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n
             </Pattern>
             <outputPatternAsHeader>true</outputPatternAsHeader>
