@@ -17,6 +17,7 @@
 *.json text
 *.properties text
 *.toml text
+*.txt text
 *.xml text
 *.yaml text
 *.yml text
