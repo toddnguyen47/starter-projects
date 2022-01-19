@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Ref: https://stackoverflow.com/a/53509257/6323360 -->
+<Configuration status="warn">
+    <Loggers>
+        <Root level="off"/>
+    </Loggers>
+</Configuration>
