@@ -46,10 +46,6 @@
         </encoder>
     </appender>
 
-    <logger name="com.aeg.schedule.schedule.event" level="error" additivity="false">
-        <appender-ref ref="file-appender-rolling" />
-    </logger>
-
     <root level="error">
         <appender-ref ref="file-appender-rolling" />
     </root>
