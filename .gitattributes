@@ -15,6 +15,7 @@
 *.csv text
 *.ini text
 *.json text
+*.md text
 *.properties text
 *.toml text
 *.txt text
