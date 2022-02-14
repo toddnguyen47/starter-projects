@@ -6,3 +6,7 @@ for development.
 . Install `pyenv` if needed: https://github.com/pyenv/pyenv
 . When running `pre-commit`, remember to start your virtual environment with `pipenv shell`
 . Do a string search and replace for `python/starter-python3-project` if you change the directory name
+
+== Python Folder Structure
+
+https://stackoverflow.com/a/3419951/6323360
