@@ -1,0 +1,14 @@
+= Scripts
+
+Shell scripts to run our Python scripts.
+
+== How to Run
+
+In a shell script, run
+
+[source, shell]
+----
+./scripts/<script_to_run>
+----
+
+Note that we need the `scripts` folder prefix for the scripts to properly run.

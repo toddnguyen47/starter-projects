@@ -1,11 +1,10 @@
 """Default app"""
+from logger_color import logger_color
 from mymath import mymath
-import logger_color
-from logger_color import LoggerType
 
 
-class App:
-    """App class"""
+class Main:
+    """Main class"""
 
     def __init__(self) -> None:
         self._variable_x = 2
@@ -18,9 +17,10 @@ class App:
 
 def _main():
     """Main function to run binary"""
-    logger = logger_color.init_logger(__name__, LoggerType.BOTH)
+    main = Main()
+    logger = logger_color.init_logger(__name__, logger_color.LoggerType.BOTH)
     logger.debug("DEBUG")
-    logger.info("INFO")
+    logger.info(f"return_two() returns: ${main.return_two()}")
     logger.warning("WARNING")
     logger.error("ERROR")
     logger.critical("CRITICAL, cannot continue")
