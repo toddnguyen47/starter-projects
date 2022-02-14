@@ -2,9 +2,9 @@
 
 set -euo pipefail
 
-export PYTHONPATH="$(pwd)"
+# export PYTHONPATH="$(pwd)"
 black mymath
 pylint mymath
 pytest mymath
-python3 -m mymath.main.py
-export PYTHONPATH=""
+python3 -m mymath.main
+# export PYTHONPATH=""
