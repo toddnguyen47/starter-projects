@@ -5,6 +5,12 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "mvn compile",
+      "type": "shell",
+      "command": "mvn -B compile ${config:mvn_skip_doc}",
+      "group": "build"
+    },
+    {
       "label": "mvn verify",
       "type": "shell",
       "command": "mvn -B verify",
@@ -25,7 +31,7 @@
     {
       "label": "mvn test current file",
       "type": "shell",
-      "command": "mvn test ${config:mvn_skip_doc} --define 'test=${fileBasenameNoExtension}' --define 'trimStackTrace=false'",
+      "command": "mvn compile test ${config:mvn_skip_doc} --define 'test=${fileBasenameNoExtension}' --define 'trimStackTrace=false'",
       "group": {
         "kind": "test",
         "isDefault": true
@@ -42,8 +48,15 @@
     {
       "label": "mvn coverage current file",
       "type": "shell",
-      "command": "mvn test --define 'test=${fileBasenameNoExtension}' --define 'doxygen.skip=true' && ${workspaceFolder}/pre_commit_hooks/generate_jacoco_report.sh",
-      "group": "test"
+      "command": "mvn test --define 'test=${fileBasenameNoExtension}' --define 'doxygen.skip=true'",
+      "group": "test",
+    },
+    {
+      "label": "generate coverage report current file",
+      "type": "shell",
+      "command": "source /Users/tn6091/opt/scripts/env-var-set.sh && ${workspaceFolder}/pre_commit_hooks/generate_jacoco_report.sh",
+      "group": "test",
+      "dependsOn": ["mvn coverage current file"]
     }
   ]
 }

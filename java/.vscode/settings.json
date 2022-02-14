@@ -1,4 +1,4 @@
 {
-"mvn_skip_doc": "--define 'jacoco.skip=true' --define 'doxygen.skip=true'",
-"java.configuration.updateBuildConfiguration": "interactive"
+    "mvn_skip_doc": "--define 'jacoco.skip=true' --define 'doxygen.skip=true'",
+    "java.configuration.updateBuildConfiguration": "interactive"
 }

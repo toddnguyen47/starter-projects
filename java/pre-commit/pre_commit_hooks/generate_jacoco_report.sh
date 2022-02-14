@@ -6,7 +6,9 @@ set -euxo pipefail
 # using `source`
 # You can obtain the latest JAR here: https://github.com/jacoco/jacoco
 
-rm -rf "${_JACOCO_HTML_FILEPATH}"
+# rm -rf "${_JACOCO_HTML_FILEPATH}"
+
+pwd
 
 java \
     -jar "${_PATH_TO_JACOCOCLI_JAR}" \
