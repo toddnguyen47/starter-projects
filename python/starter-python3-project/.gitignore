@@ -2,7 +2,7 @@
 Pipfile.lock
 
 # Virtual Env
-.venv
+# .venv
 
 # Created by https://www.toptal.com/developers/gitignore/api/python
 # Edit at https://www.toptal.com/developers/gitignore?templates=python
@@ -116,7 +116,7 @@ celerybeat.pid
 
 # Environments
 .env
-.venv
+# .venv
 env/
 venv/
 ENV/
