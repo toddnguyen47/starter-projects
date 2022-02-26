@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <!-- TODO: Change these settings accordingly -->
@@ -62,8 +63,10 @@
           </configuration>
           <executions>
             <execution>
-              <id>make-assembly</id> <!-- this is used for inheritance merges -->
-              <phase>package</phase> <!-- bind to the packaging phase -->
+              <!-- this is used for inheritance merges -->
+              <id>make-assembly</id>
+              <!-- bind to the packaging phase -->
+              <phase>package</phase>
               <goals>
                 <goal>single</goal>
               </goals>
@@ -71,15 +74,25 @@
           </executions>
         </plugin>
         <plugin>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <groupId>org.apache.maven.plugins</groupId>
-          <version>3.0.0-M5</version>
-        </plugin>
-        <plugin>
           <artifactId>maven-compiler-plugin</artifactId>
           <groupId>org.apache.maven.plugins</groupId>
           <version>3.8.1</version>
           <configuration></configuration>
+        </plugin>
+        <!-- Ref: https://maven.apache.org/surefire/maven-surefire-plugin/examples/fork-options-and-parallel-execution.html -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>3.0.0-M5</version>
+          <configuration>
+            <forkCount>4</forkCount>
+            <reuseForks>true</reuseForks>
+            <argLine> -Xmx1024m -XX:MaxPermSize=256m </argLine>
+            <systemPropertyVariables>
+              <databaseSchema>MY_TEST_SCHEMA_${surefire.forkNumber}</databaseSchema>
+            </systemPropertyVariables>
+            <workingDirectory>FORK_DIRECTORY_${surefire.forkNumber}</workingDirectory>
+          </configuration>
         </plugin>
       </plugins>
     </pluginManagement>
