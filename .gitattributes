@@ -28,3 +28,5 @@
 *.jpeg binary
 *.pdf binary
 *.png binary
+*.xls binary
+*.xlsx binary
