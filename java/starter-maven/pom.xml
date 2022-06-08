@@ -18,6 +18,7 @@
     <!-- Ref: https://stackoverflow.com/a/3018152/6323360 -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <spotless.version>2.22.6</spotless.version>
   </properties>
 
   <dependencies>
@@ -40,6 +41,12 @@
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-core</artifactId>
       <version>2.14.1</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.diffplug.spotless/spotless-maven-plugin -->
+    <dependency>
+      <groupId>com.diffplug.spotless</groupId>
+      <artifactId>spotless-maven-plugin</artifactId>
+      <version>${spotless.version}</version>
     </dependency>
   </dependencies>
 
@@ -94,8 +101,45 @@
             <workingDirectory>FORK_DIRECTORY_${surefire.forkNumber}</workingDirectory>
           </configuration>
         </plugin>
+        <plugin>
+          <groupId>com.diffplug.spotless</groupId>
+          <artifactId>spotless-maven-plugin</artifactId>
+          <version>${spotless.version}</version>
+          <executions>
+            <execution>
+              <phase>compile</phase>
+              <goals>
+                <goal>apply</goal>
+              </goals>
+            </execution>
+          </executions>
+          <configuration>
+            <!-- define a language-specific format -->
+            <java>
+              <importOrder />
+              <removeUnusedImports />
+              <!-- no need to specify files, inferred automatically, but you can if you want -->
+              <!-- apply a specific flavor of google-java-format and reflow long strings -->
+              <googleJavaFormat>
+                <!-- Java 1.8 can only use google-java-format 1.7 -->
+                <version>1.7</version>
+                <!-- GOOGLE / AOSP (optional) -->
+                <style>GOOGLE</style>
+                <!-- optional: custom group artifact (you probably don't need this) -->
+                <!-- <groupArtifact>com.google.googlejavaformat:google-java-format</groupArtifact> -->
+              </googleJavaFormat>
+            </java>
+          </configuration>
+        </plugin>
       </plugins>
     </pluginManagement>
+
+    <plugins>
+      <plugin>
+        <groupId>com.diffplug.spotless</groupId>
+        <artifactId>spotless-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
   </build>
 
 </project>
