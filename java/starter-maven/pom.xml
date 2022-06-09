@@ -51,93 +51,85 @@
   </dependencies>
 
   <build>
-    <pluginManagement>
-      <plugins>
-        <!-- Ref: https://stackoverflow.com/a/574650/6323360 -->
-        <plugin>
-          <artifactId>maven-assembly-plugin</artifactId>
-          <configuration>
-            <archive>
-              <manifest>
-                <!-- TODO: Change your main class here -->
-                <mainClass>com.github.toddnguyen47.Application</mainClass>
-              </manifest>
-            </archive>
-            <descriptorRefs>
-              <descriptorRef>jar-with-dependencies</descriptorRef>
-            </descriptorRefs>
-            <!-- <appendAssemblyId>false</appendAssemblyId> -->
-          </configuration>
-          <executions>
-            <execution>
-              <!-- this is used for inheritance merges -->
-              <id>make-assembly</id>
-              <!-- bind to the packaging phase -->
-              <phase>package</phase>
-              <goals>
-                <goal>single</goal>
-              </goals>
-            </execution>
-          </executions>
-        </plugin>
-        <plugin>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <groupId>org.apache.maven.plugins</groupId>
-          <version>3.8.1</version>
-          <configuration></configuration>
-        </plugin>
-        <!-- Ref: https://maven.apache.org/surefire/maven-surefire-plugin/examples/fork-options-and-parallel-execution.html -->
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <version>3.0.0-M5</version>
-          <configuration>
-            <forkCount>4</forkCount>
-            <reuseForks>true</reuseForks>
-            <argLine> -Xmx1024m </argLine>
-            <systemPropertyVariables>
-              <databaseSchema>MY_TEST_SCHEMA_${surefire.forkNumber}</databaseSchema>
-            </systemPropertyVariables>
-            <workingDirectory>FORK_DIRECTORY_${surefire.forkNumber}</workingDirectory>
-          </configuration>
-        </plugin>
-        <plugin>
-          <groupId>com.diffplug.spotless</groupId>
-          <artifactId>spotless-maven-plugin</artifactId>
-          <version>${spotless.version}</version>
-          <configuration>
-            <executions>
-              <execution>
-                <phase>compile</phase>
-                <goals>
-                  <goal>apply</goal>
-                </goals>
-              </execution>
-            </executions>
-            <!-- define a language-specific format -->
-            <java>
-              <importOrder />
-              <removeUnusedImports />
-              <!-- no need to specify files, inferred automatically, but you can if you want -->
-              <!-- apply a specific flavor of google-java-format and reflow long strings -->
-              <googleJavaFormat>
-                <!-- Java 1.8 can only use google-java-format 1.7 -->
-                <version>1.7</version>
-                <!-- GOOGLE / AOSP (optional) -->
-                <style>GOOGLE</style>
-                <!-- optional: custom group artifact (you probably don't need this) -->
-                <!-- <groupArtifact>com.google.googlejavaformat:google-java-format</groupArtifact> -->
-              </googleJavaFormat>
-            </java>
-          </configuration>
-        </plugin>
-      </plugins>
-    </pluginManagement>
-
     <plugins>
+      <!-- Ref: https://stackoverflow.com/a/574650/6323360 -->
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <!-- TODO: Change your main class here -->
+              <mainClass>com.github.toddnguyen47.Application</mainClass>
+            </manifest>
+          </archive>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+          <!-- <appendAssemblyId>false</appendAssemblyId> -->
+        </configuration>
+        <executions>
+          <execution>
+            <!-- this is used for inheritance merges -->
+            <id>make-assembly</id>
+            <!-- bind to the packaging phase -->
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <groupId>org.apache.maven.plugins</groupId>
+        <version>3.8.1</version>
+        <configuration></configuration>
+      </plugin>
+      <!-- Ref: https://maven.apache.org/surefire/maven-surefire-plugin/examples/fork-options-and-parallel-execution.html -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.0.0-M5</version>
+        <configuration>
+          <forkCount>4</forkCount>
+          <reuseForks>true</reuseForks>
+          <argLine> -Xmx1024m </argLine>
+          <systemPropertyVariables>
+            <databaseSchema>MY_TEST_SCHEMA_${surefire.forkNumber}</databaseSchema>
+          </systemPropertyVariables>
+          <workingDirectory>FORK_DIRECTORY_${surefire.forkNumber}</workingDirectory>
+        </configuration>
+      </plugin>
       <plugin>
         <groupId>com.diffplug.spotless</groupId>
         <artifactId>spotless-maven-plugin</artifactId>
+        <version>${spotless.version}</version>
+        <executions>
+          <execution>
+            <?m2e execute onConfiguration?>
+            <phase>compile</phase>
+            <goals>
+              <goal>apply</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <!-- define a language-specific format -->
+          <java>
+            <importOrder />
+            <removeUnusedImports />
+            <!-- no need to specify files, inferred automatically, but you can if you want -->
+            <!-- apply a specific flavor of google-java-format and reflow long strings -->
+            <googleJavaFormat>
+              <!-- Java 1.8 can only use google-java-format 1.7 -->
+              <version>1.7</version>
+              <!-- GOOGLE / AOSP (optional) -->
+              <style>GOOGLE</style>
+              <!-- optional: custom group artifact (you probably don't need this) -->
+              <!-- <groupArtifact>com.google.googlejavaformat:google-java-format</groupArtifact> -->
+            </googleJavaFormat>
+          </java>
+        </configuration>
       </plugin>
     </plugins>
   </build>
