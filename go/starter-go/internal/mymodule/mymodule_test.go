@@ -3,8 +3,7 @@ package mymodule_test
 import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
-
-	"github.com/toddnguyen47/starter-projects/go/starter-go/mymodule"
+	"github.com/toddnguyen47/starter-projects/go/starter-go/internal/mymodule"
 )
 
 var _ = Describe("Mymodule", func() {
