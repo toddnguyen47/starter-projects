@@ -11,18 +11,19 @@ import (
 // Define the suite, and absorb the built-in basic suite
 // functionality from testify - including a T() method which
 // returns the current testing context
+// TODO: Rename `RenameYourTestClassTestSuite` to your test suite name
 type RenameYourTestClassTestSuite struct {
 	suite.Suite
 	ctxBg context.Context
 }
 
-func (suite *RenameYourTestClassTestSuite) SetupTest() {
-	suite.resetMonkeyPatching()
-	suite.ctxBg = context.Background()
+func (s *RenameYourTestClassTestSuite) SetupTest() {
+	s.resetMonkeyPatching()
+	s.ctxBg = context.Background()
 }
 
-func (suite *RenameYourTestClassTestSuite) TearDownTest() {
-	suite.resetMonkeyPatching()
+func (s *RenameYourTestClassTestSuite) TearDownTest() {
+	s.resetMonkeyPatching()
 }
 
 // In order for 'go test' to run this suite, we need to create
@@ -37,7 +38,7 @@ func TestRenameYourTestClassTestSuite(t *testing.T) {
 // #region TESTS ARE BELOW
 // ############################################################################
 
-func (suite *RenameYourTestClassTestSuite) Test_GivenJsonUnmarshalError_WhenProcessing_ThenSkipThatRecord() {
+func (s *RenameYourTestClassTestSuite) Test_GivenJsonUnmarshalError_WhenProcessing_ThenSkipThatRecord() {
 	// -- ARRANGE --
 
 	// -- ACT --
@@ -49,7 +50,7 @@ func (suite *RenameYourTestClassTestSuite) Test_GivenJsonUnmarshalError_WhenProc
 // #region TEST HELPERS
 // ############################################################################
 
-func (suite *RenameYourTestClassTestSuite) resetMonkeyPatching() {
+func (s *RenameYourTestClassTestSuite) resetMonkeyPatching() {
 }
 
 // #endregion
