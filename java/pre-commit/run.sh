@@ -1,12 +1,17 @@
 #!/bin/bash
 
-set -eux -o pipefail
+set -eu -o pipefail
 
 _full_path="$HOME/programming/personal/starter-projects/java/pre-commit"
 _cur_path="$(pwd)"
 pushd "${_full_path}"
 
-python3 "pre_commit_hooks/run_pmd.py" "${_cur_path}/$1"
+# Need an if statement so the command does not exit our script
+if python3 "pre_commit_hooks/run_pmd.py" "${_cur_path}/$1"; then
+  echo "Success!"
+else
+  echo "Result: $?"
+fi
 
 _python_path="$HOME/programming/personal/pre-commit-hooks"
 export PYTHONPATH="${_python_path}"
