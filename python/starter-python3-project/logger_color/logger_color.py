@@ -13,7 +13,10 @@ from colorama import Fore, Style
 colorama.init()
 
 _LOGS_FOLDER = "logger_color/logs/"
-_LOG_FORMAT_STR_STREAM = "[%(asctime)s] [%(levelname)-10s] >>> %(message)s " + "[%(filename)s:%(lineno)d]"
+_LOG_FORMAT_STR_STREAM = (
+    "[%(asctime)s] [%(processName)s %(threadName)s] [%(levelname)-10s] >>> %(message)s "
+    + "[%(filename)s:%(lineno)d]"
+)
 _LOG_FORMAT_STR_FILE = _LOG_FORMAT_STR_STREAM + " [Logger Name: %(name)s]"
 _DATE_FMT_STR = "%Y-%m-%dT%H:%M:%S"
 

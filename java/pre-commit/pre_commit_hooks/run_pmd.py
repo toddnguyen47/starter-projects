@@ -9,12 +9,12 @@ import time
 import sys
 
 # Ref: https://github.com/pre-commit/pre-commit-hooks/blob/master/pre_commit_hooks/trailing_whitespace_fixer.py
-_PREFIX = "change/path/to"
+_PREFIX = ""
 _PMD_ANALYSIS_FOLDER = "pmd-analysis"
 _UTF8_ENCODING = "utf-8"
 _CACHE_FILE_EXT = ".bin"
-_BASE_CACHE_NAME_MAIN = "pmd-cache-main" + _CACHE_FILE_EXT
-_BASE_CACHE_NAME_TEST = "pmd-cache-test" + _CACHE_FILE_EXT
+_BASE_CACHE_NAME_MAIN = "pmd--cache-main" + _CACHE_FILE_EXT
+_BASE_CACHE_NAME_TEST = "pmd--cache-test" + _CACHE_FILE_EXT
 _INDEX_CACHE_NAME = 2
 _OUTPUT_FORMAT = "text"
 _OUTOUT_MAIN_FILE = "/output-main.txt"
@@ -23,26 +23,26 @@ _OUTPUT_TEST_FILE = "/output-test.txt"
 _pmd_cmd_main = collections.deque(
     [
         "pmd",
-        "-cache",
+        "--cache",
         '"' + _PMD_ANALYSIS_FOLDER + "/cache/" + _BASE_CACHE_NAME_MAIN + '"',
-        "-rulesets",
+        "--rulesets",
         '"' + _PMD_ANALYSIS_FOLDER + '/pmd-ruleset-main.xml"',
-        "-format",
+        "--format",
         _OUTPUT_FORMAT,
-        "-dir",
+        "--dir",
     ]
 )
 
 _pmd_cmd_test = collections.deque(
     [
         "pmd",
-        "-cache",
+        "--cache",
         '"' + _PMD_ANALYSIS_FOLDER + "/cache/" + _BASE_CACHE_NAME_TEST + '"',
-        "-rulesets",
+        "--rulesets",
         '"' + _PMD_ANALYSIS_FOLDER + '/pmd-ruleset-test.xml"',
-        "-format",
+        "--format",
         _OUTPUT_FORMAT,
-        "-dir",
+        "--dir",
     ]
 )
 

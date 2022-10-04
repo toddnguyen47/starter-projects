@@ -1,4 +1,0 @@
-= bin directory
-
-All files in this folder are purposely ignored save for this README
-

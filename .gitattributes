@@ -11,6 +11,7 @@
 # *********************************************************
 
 # Default Config Text
+*.adoc text
 *.cfg text
 *.csv text
 *.ini text
@@ -28,3 +29,5 @@
 *.jpeg binary
 *.pdf binary
 *.png binary
+*.xls binary
+*.xlsx binary
